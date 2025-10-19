@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/hero-bg-2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7; /* adjust to desired transparency */
+  z-index: 0;    /* behind the text */
+}
+
+#hero > .max-w-3xl {
+  position: relative;
+  z-index: 10;   /* ensure text is above background */
+  text-align: center; /* optional centering */
+}
+
