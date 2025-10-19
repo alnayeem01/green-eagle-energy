@@ -3,8 +3,11 @@
 import React, { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
+
+
 export default function FAQ() {
-  const faqs = [
+    
+  const faqs  = [
     {
       question: 'Who is eligible for ECO4 grants?',
       answer: 'Homeowners and private tenants in the UK with low-income households or vulnerable residents.',
@@ -23,11 +26,11 @@ export default function FAQ() {
     },
   ]
 
-  const [openIndex, setOpenIndex] = useState(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const toggleFAQ = (index:any) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+ const toggleFAQ = (index: number) => {
+  setOpenIndex(openIndex === index ? null : index)
+}
 
   return (
     <section className="bg-white py-16 px-6">
