@@ -1,33 +1,46 @@
 'use client'
+import FAQ from '@/components/FAQ'
+import Footer from '@/components/Footer'
+import HowItWorks from '@/components/HowItWorks'
+import MyNavbar from '@/components/MyNavbar'
+import Services from '@/components/Services'
+import CTAButton from '@/components/UI/CTAButton'
 import React from 'react'
-import MyNavbar from './components/MyNavbar'
-import Services from './components/Services'
-import HowItWorks from './components/HowItWorks'
-import FAQ from './components/FAQ'
-import Footer from './components/Footer'
+
 
 const page = () => {
   return (
     <>
       <MyNavbar />
-      <section id='hero' >
-        <div className="max-w-3xl px-15  z-10">
-          <h1 className="text-4xl pt-30 md:text-5xl font-extrabold text-white mb-4 leading-snug">
-            Upgrade Your Home’s Efficiency with the ECO4 Government Grant
+      <section
+        id="hero"
+        className="relative bg-gray-900 min-h-screen flex items-center justify-center px-6 md:px-12"
+      >
+        {/* Background overlay / optional image */}
+        <div className="absolute inset-0 -z-10">
+          <img
+            src="/hero-bg.jpg"
+            alt="Energy efficient home"
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div className="max-w-3xl text-center z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-snug tracking-tight">
+            Transform Your Home’s Efficiency with the <span className="text-green-500">ECO4 Grant</span>
           </h1>
-          <p className="text-gray-200 text-lg md:text-xl mb-8">
-            Get a brand-new boiler or insulation installed at <span className="font-semibold text-green-600">no cost</span>.
-            Save energy, lower your bills, and make your home greener — all funded under the UK ECO4 Scheme.
+
+          <p className="text-gray-200 text-lg md:text-xl lg:text-2xl mb-10 leading-relaxed">
+            Install a brand-new boiler, insulation, or renewable measures at{' '}
+            <span className="font-semibold text-green-500">no cost</span>. Lower your bills, save energy,
+            and make your home greener — fully funded by the UK ECO4 Scheme.
           </p>
-          <button
-            onClick={() => {
-            }}
-            className="bg-green-600 text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:bg-green-700 transition-all text-lg md:text-xl"
-          >
-            Check Your Eligibility
-          </button>
+
+          <CTAButton text={"Check Eligibility "} />
         </div>
       </section>
+
 
       <Services />
       <HowItWorks />

@@ -36,11 +36,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('/hero-bg-2.jpg');
+  background-image: url('/hero-bg-3.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; /* adjust to desired transparency */
+  opacity: 0.2; /* adjust to desired transparency */
   z-index: 0;    /* behind the text */
 }
 
