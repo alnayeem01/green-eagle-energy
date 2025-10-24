@@ -40,7 +40,7 @@ export default function FAQ() {
           Answers to common questions about ECO4 grants and home energy upgrades.
         </p>
       </div>
-      <div className="max-w-5xl mx-auto space-y-4">
+      <div className="max-w-2xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="bg-gray-50 rounded-2xl shadow-md overflow-hidden">
             <button
