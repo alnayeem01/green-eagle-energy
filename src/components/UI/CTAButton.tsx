@@ -10,7 +10,7 @@ const CTAButton:FC<Props> = ({text}) => {
     return (
         <button
             onClick={() => {push('/form') }}
-            className="bg-green-500 text-white px-10 py-4 md:px-12 md:py-5 rounded-3xl font-bold shadow-xl hover:bg-green-600 transition-all text-lg md:text-xl tracking-wide"
+            className="bg-green-500 text-white px-10 py-4 md:px-8 md:py-5 rounded-3xl font-bold shadow-xl hover:bg-green-600 transition-all text-lg md:text-xl tracking-wide"
         >
             {text}
         </button>

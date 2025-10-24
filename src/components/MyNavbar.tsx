@@ -5,10 +5,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-5 left-5 right-5 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 rounded-2xl">
+    <nav className="fixed top-2 left-5 right-5 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 rounded-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         {/* Logo */}
-        <h1 className="text-2xl md:text-2xl font-extrabold text-green-600 tracking-tight font-sans">
+        <h1 className="text-xl md:text-2xl font-extrabold text-green-600 tracking-tight font-sans">
           Green Eagle Energy
         </h1>
 

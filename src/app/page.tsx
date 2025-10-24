@@ -14,7 +14,7 @@ const page = () => {
       <MyNavbar />
       <section
         id="hero"
-        className="relative bg-gray-900 min-h-screen flex items-center justify-center px-6 md:px-12"
+        className="relative bg-gray-900 min-h-screen flex items-center justify-center px-6"
       >
         {/* Background overlay / optional image */}
         <div className="absolute inset-0 -z-10">
