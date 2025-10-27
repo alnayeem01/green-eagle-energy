@@ -420,8 +420,8 @@ const Page = () => {
   return (
     <>
       <MyNavbar />
-      <main className="min-h-screen bg-black/50 flex items-center justify-center px-4 py-10 mt-16">
-        <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-gray-200">
+      <main className="min-h-screen bg-white/90 flex items-center justify-center px-4  ">
+        <div className="w-full max-w-2xl md:my-20 bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-gray-200">
           {/* Progress */}
           <div className="w-full bg-gray-200 h-2 rounded-full mb-6">
             <div
