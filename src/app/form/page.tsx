@@ -396,11 +396,11 @@ const Page = () => {
     }
   }
 
-  if (!submitted)
+  if (submitted)
     return (
       <>
         <MyNavbar />
-        <section className="min-h-screen flex flex-col items-center justify-center bg-black/200 px-4">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center max-w-md w-full">
             <h2 className="text-2xl font-bold text-green-700 mb-4">
               Thank you!
@@ -420,7 +420,7 @@ const Page = () => {
   return (
     <>
       <MyNavbar />
-      <main className="min-h-screen bg-black/500 flex items-center justify-center px-4 py-10 mt-16">
+      <main className="min-h-screen bg-black/50 flex items-center justify-center px-4 py-10 mt-16">
         <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-gray-200">
           {/* Progress */}
           <div className="w-full bg-gray-200 h-2 rounded-full mb-6">
