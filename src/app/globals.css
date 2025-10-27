@@ -50,3 +50,6 @@ body {
   text-align: center; /* optional centering */
 }
 
+html {
+  scroll-behavior: smooth;
+}

@@ -95,6 +95,14 @@ const Page = () => {
   }
 
   const handleSubmit = async () => {
+    setError('') // clear any previous errors
+
+    // ✅ Consent validation
+    if (!formData.consent) {
+      setError('You must agree to data processing before submitting.')
+      return
+    }
+
     try {
       const payload = new FormData()
       Object.entries(formData).forEach(([k, v]) => {
@@ -104,10 +112,9 @@ const Page = () => {
           payload.append(k, String(v))
         }
       })
-      // https://formspree.io/f/mzzkdgjo
 
       const res = await axios.post('https://formspree.io/f/mzzkdgjo', payload, {
-        headers: { 'Accept': 'application/json' },
+        headers: { Accept: 'application/json' },
       })
 
       if (res.status === 200) setSubmitted(true)
@@ -121,6 +128,7 @@ const Page = () => {
       }
     }
   }
+
 
   const inputBase =
     'w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none transition text-gray-800'
@@ -367,6 +375,20 @@ const Page = () => {
               }
               className={inputBase}
             />
+            <label className="flex items-start gap-2 mt-4">
+              <input
+                type="checkbox"
+                required
+                onChange={(e) => handleChange("consent", e.target.checked)}
+              />
+              <span className="text-xs text-gray-600 leading-tight">
+                I consent to my data (including uploaded files) being processed for eligibility assessment, in line with the{" "}
+                <a href="/privacy" target="_blank" className="underline text-green-700 hover:text-green-800">
+                  Privacy Policy
+                </a>.
+              </span>
+            </label>
+
           </>
         )
       default:
@@ -374,11 +396,11 @@ const Page = () => {
     }
   }
 
-  if (submitted)
+  if (!submitted)
     return (
       <>
         <MyNavbar />
-        <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-black/200 px-4">
           <div className="bg-white p-8 rounded-3xl shadow-lg text-center max-w-md w-full">
             <h2 className="text-2xl font-bold text-green-700 mb-4">
               Thank you!
@@ -398,7 +420,7 @@ const Page = () => {
   return (
     <>
       <MyNavbar />
-      <main className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10 mt-16">
+      <main className="min-h-screen bg-black/500 flex items-center justify-center px-4 py-10 mt-16">
         <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8 sm:p-10 border border-gray-200">
           {/* Progress */}
           <div className="w-full bg-gray-200 h-2 rounded-full mb-6">

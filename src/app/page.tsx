@@ -13,6 +13,7 @@ const page = () => {
     <>
       <MyNavbar />
       <section
+        
         id="hero"
         className="relative bg-gray-900  h-screen flex items-center justify-center px-6"
       >
