@@ -32,7 +32,7 @@ const Page = () => {
     // Step 2: Boiler over 20 logic
     if (step === 2) {
       if (formData.boiler20 === 'Yes') {
-        setStep(5) // skip boiler change & upload
+        setStep(3) // skip boiler change & upload
         return
       } else if (formData.boiler20 === 'No') {
         setStep(3)
