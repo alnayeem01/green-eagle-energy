@@ -23,6 +23,11 @@ const Page = () => {
       setError('Sorry, only homeowners or property owners can apply.')
       return
     }
+    if (step === 1 && (!formData.homeowner || formData.homeowner === 'Select')) {
+      setError('Please select Yes or No.')
+      return
+    }
+
 
     // Step 2: Boiler over 20 logic
     if (step === 2) {
@@ -60,6 +65,23 @@ const Page = () => {
       }
     }
 
+    // Step 5: is anyone on benefit?
+    if (step === 5) {
+      if (formData.benefits === 'Yes') {
+        setStep(6) // skip boiler change & upload
+        return
+      } else if (formData.benefits === 'No') {
+        setStep(6)
+        return
+      } else {
+        setError('Please select Yes or No.')
+        return
+      }
+    }
+
+
+
+
     // Step 7: Qualification check
     if (step === 7) {
       const qualifies =
@@ -81,18 +103,31 @@ const Page = () => {
     }
     // Step 8: Address validation
     if (step === 9) {
-      if (!formData.fullname ) {
+      if (!formData.fullname) {
         setError('Please fill your name.')
         return
       }
     }
     // Step 8: Address validation
     if (step === 10) {
-      if (!formData.email ) {
+      if (!formData.email) {
         setError('Please enter a valid email.')
         return
       }
     }
+    if (step === 11) {
+      if (!formData.dob) {
+        setError('Please enter a valid Date of birth')
+        return
+      }
+    }
+    if (step === 12) {
+      if (!formData.council) {
+        setError('Please enter council name.')
+        return
+      }
+    }
+
 
     setStep(step + 1)
   }
@@ -113,6 +148,12 @@ const Page = () => {
     setError('') // clear any previous errors
     setIsLoading(true)
 
+    if (!formData.utilityBill) {
+      setError('Please uload an utility bill to continue.')
+      setIsLoading(false)
+      return
+    }
+
     // ✅ Consent validation
     if (!formData.consent) {
       setError('You must agree to data processing before submitting.')
@@ -129,14 +170,15 @@ const Page = () => {
           payload.append(k, String(v))
         }
       })
+      const URL = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
-      const res = await axios.post('https://formspree.io/f/mzzkdgjo', payload, {
+      const res = await axios.post(`${URL}`, payload, {
         headers: { Accept: 'application/json' },
       })
 
-      if (res.status === 200){
-       setSubmitted(true)
-       setIsLoading(false)
+      if (res.status === 200) {
+        setSubmitted(true)
+        setIsLoading(false)
       }
 
       else setError('Failed to submit. Please try again later.')
