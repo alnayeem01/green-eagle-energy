@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
@@ -25,10 +26,8 @@ export default function Footer() {
                 <div>
                     <h3 className="text-white font-semibold mb-4">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><a href="#services" className="hover:text-green-500 transition-colors">Services</a></li>
-                        <li><a href="#how-it-works" className="hover:text-green-500 transition-colors">How It Works</a></li>
-                        <li><a href="#faq" className="hover:text-green-500 transition-colors">FAQ</a></li>
-                        <li><a href="#contact" className="hover:text-green-500 transition-colors">Contact</a></li>
+                        <li><Link href="/privacy-policy" className="hover:text-green-500 transition-colors">Privacy Policy</Link></li>
+                        
                     </ul>
                 </div>
 
@@ -48,7 +47,7 @@ export default function Footer() {
             <div className="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-center items-center gap-2">
                 <span>&copy; {new Date().getFullYear()} Green Eagle Energy. All rights reserved.</span>
                 <span>•</span>
-                <a href="https://yourdevportfolio.com" className="hover:text-green-500 transition-colors">Developed by AL Shahriar Nayeem</a>
+                <a href="https://www.alnayeem.com/" className="hover:text-green-500 transition-colors">Developed by AL Shahriar Nayeem</a>
             </div>
         </footer>
     )
