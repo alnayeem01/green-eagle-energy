@@ -10,6 +10,7 @@ const Page = () => {
   const [formData, setFormData] = useState<{ [key: string]: any }>({})
   const [error, setError] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (name: string, value: any) => {
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -78,6 +79,20 @@ const Page = () => {
         return
       }
     }
+    // Step 8: Address validation
+    if (step === 9) {
+      if (!formData.fullname ) {
+        setError('Please fill your name.')
+        return
+      }
+    }
+    // Step 8: Address validation
+    if (step === 10) {
+      if (!formData.email ) {
+        setError('Please enter a valid email.')
+        return
+      }
+    }
 
     setStep(step + 1)
   }
@@ -96,10 +111,12 @@ const Page = () => {
 
   const handleSubmit = async () => {
     setError('') // clear any previous errors
+    setIsLoading(true)
 
     // ✅ Consent validation
     if (!formData.consent) {
       setError('You must agree to data processing before submitting.')
+      setIsLoading(false)
       return
     }
 
@@ -117,7 +134,11 @@ const Page = () => {
         headers: { Accept: 'application/json' },
       })
 
-      if (res.status === 200) setSubmitted(true)
+      if (res.status === 200){
+       setSubmitted(true)
+       setIsLoading(false)
+      }
+
       else setError('Failed to submit. Please try again later.')
     } catch (e: any) {
       if (e.response) {
@@ -126,6 +147,7 @@ const Page = () => {
       } else {
         setError('Something went wrong. Try again.')
       }
+      setIsLoading(false)
     }
   }
 
@@ -338,6 +360,20 @@ const Page = () => {
         return (
           <>
             <label className="font-semibold text-gray-800 mb-2 block">
+              Email
+            </label>
+            <input
+              type="text"
+              className={inputBase}
+              value={formData.email || ''}
+              onChange={(e) => handleChange('email', e.target.value)}
+            />
+          </>
+        )
+      case 11:
+        return (
+          <>
+            <label className="font-semibold text-gray-800 mb-2 block">
               Date of birth
             </label>
             <input
@@ -348,7 +384,7 @@ const Page = () => {
             />
           </>
         )
-      case 11:
+      case 12:
         return (
           <>
             <label className="font-semibold text-gray-800 mb-2 block">
@@ -362,7 +398,7 @@ const Page = () => {
             />
           </>
         )
-      case 12:
+      case 13:
         return (
           <>
             <label className="font-semibold text-gray-800 mb-2 block">
@@ -415,7 +451,7 @@ const Page = () => {
       </>
     )
 
-  const totalSteps = 12
+  const totalSteps = 13
 
   return (
     <>
@@ -455,7 +491,7 @@ const Page = () => {
 
             {step === totalSteps ? (
               <button onClick={handleSubmit} className={btnNext}>
-                Submit
+                {!isLoading ? 'Submit' : 'Submittig...'}
               </button>
             ) : (
               <button onClick={nextStep} className={btnNext}>
