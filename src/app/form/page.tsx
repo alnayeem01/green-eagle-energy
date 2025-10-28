@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import MyNavbar from '@/components/MyNavbar'
 import Footer from '@/components/Footer'
 import axios from 'axios'
+import Link from 'next/link'
 
 const Page = () => {
   const [step, setStep] = useState(1)
@@ -267,7 +268,6 @@ const Page = () => {
             <input
               type="file"
               accept="image/*"
-              capture='environment'
               onChange={(e) =>
                 handleChange('boilerImage', e.target.files?.[0])
               }
@@ -454,7 +454,6 @@ const Page = () => {
             </label>
             <input
               type="file"
-              capture='environment'
               onChange={(e) =>
                 handleChange('utilityBill', e.target.files?.[0])
               }
@@ -468,9 +467,9 @@ const Page = () => {
               />
               <span className="text-xs text-gray-600 leading-tight">
                 I consent to my data (including uploaded files) being processed for eligibility assessment, in line with the{" "}
-                <a href="/privacy" target="_blank" className="underline text-green-700 hover:text-green-800">
+                <Link href="/privacy" target="_blank" className="underline text-green-700 hover:text-green-800">
                   Privacy Policy
-                </a>.
+                </Link>.
               </span>
             </label>
 
