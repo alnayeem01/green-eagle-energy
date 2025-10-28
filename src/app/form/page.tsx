@@ -59,7 +59,7 @@ const Page = () => {
 
     // Step 4: Boiler upload
     if (step === 4) {
-      if (!formData.boilerImage || !formData.boilerMake || !formData.boilerModel) {
+      if (!formData.boilerImage) {
         setError('Please upload a picture and provide make/model of your boiler.')
         return
       }
@@ -267,6 +267,7 @@ const Page = () => {
             <input
               type="file"
               accept="image/*"
+              capture='environment'
               onChange={(e) =>
                 handleChange('boilerImage', e.target.files?.[0])
               }
@@ -290,14 +291,14 @@ const Page = () => {
             )}
             <input
               type="text"
-              placeholder="Boiler make"
+              placeholder="Boiler make - Optional"
               className={`${inputBase} mt-3`}
               value={formData.boilerMake || ''}
               onChange={(e) => handleChange('boilerMake', e.target.value)}
             />
             <input
               type="text"
-              placeholder="Boiler model"
+              placeholder="Boiler model - Optional"
               className={`${inputBase} mt-3`}
               value={formData.boilerModel || ''}
               onChange={(e) => handleChange('boilerModel', e.target.value)}
@@ -453,6 +454,7 @@ const Page = () => {
             </label>
             <input
               type="file"
+              capture='environment'
               onChange={(e) =>
                 handleChange('utilityBill', e.target.files?.[0])
               }
