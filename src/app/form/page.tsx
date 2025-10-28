@@ -171,6 +171,11 @@ const Page = () => {
         }
       })
       const URL = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+      if (!URL) {
+        console.error("❌ Formspree endpoint missing. Check your Vercel env variables.");
+        setError("Internal configuration error. Please try again later.");
+        return;
+      }
 
       const res = await axios.post(`${URL}`, payload, {
         headers: { Accept: 'application/json' },
